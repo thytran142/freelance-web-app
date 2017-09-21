@@ -202,6 +202,20 @@ export function RoutesConfig ($stateProvider, $urlRouterProvider) {
         }
       }
     })
+    .state('app.usersettings',{
+      url:'/user-settings',
+      data: {
+        auth:true
+      },
+      views: {
+        'main@app': {
+          template: '<user-settings></user-settings>'
+        }
+      },
+      params: {
+        alerts: null
+      }
+     })
     .state('app.userpermissionsadd', {
       url: '/user-permissions-add',
       data: {

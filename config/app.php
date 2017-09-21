@@ -148,6 +148,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+
         /*
          * Application Service Providers...
          */
@@ -164,7 +165,7 @@ return [
         Barryvdh\Cors\ServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         Bican\Roles\RolesServiceProvider::class,
-
+     
     ],
 
     /*
@@ -213,6 +214,7 @@ return [
         'Input'     => Illuminate\Support\Facades\Input::class,
         'JWTAuth'   => Tymon\JWTAuth\Facades\JWTAuth::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+
     ],
 
 ];

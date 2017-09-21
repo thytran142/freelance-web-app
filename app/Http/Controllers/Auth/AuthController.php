@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\User;
+use App\Setting;
+use App\UserSetting;
 use Auth;
 use Bican\Roles\Models\Role;
 use Illuminate\Http\Request;
@@ -182,6 +184,56 @@ class AuthController extends Controller
      *
      * @return JSON user details and auth credentials
      */
+    public function saveUserSetting($id){
+        //save fulltime job salary 
+        $setting = new UserSetting();
+        $setting->user_id = $id;
+        $setting->setting_id = 1;
+        $setting->value = '4000';
+        $setting->save();
+        //save fulltime job hours 
+        $setting = new UserSetting();
+        $setting->user_id = $id;
+        $setting->setting_id = 2;
+        $setting->value = '8';
+        $setting->save();
+        //save average fulltime job salary 
+        $setting = new UserSetting();
+        $setting->user_id = $id;
+        $setting->setting_id = 3;
+        $setting->value = "25";
+        $setting->save();
+        //save average freelance job salary
+        $setting = new UserSetting();
+        $setting->user_id = $id;
+        $setting->setting_id = 4;
+        $setting->value = '25';
+        $setting->save();
+        //save number of freelance hours for weekday
+        $setting = new UserSetting();
+        $setting->user_id = $id;
+        $setting->setting_id = 5;
+        $setting->value = '3';
+        $setting->save();
+        //save number hours freelance for weekend
+        $setting = new UserSetting();
+        $setting->user_id = $id;
+        $setting->setting_id = 6;
+        $setting->value = '8';
+        $setting->save();
+        //save opening proposal
+        $setting = new UserSetting();
+        $setting->user_id = $id;
+        $setting->setting_id = 7;
+        $setting->value = '';
+        $setting->save();
+        //save closing proposal
+        $setting = new UserSetting();
+        $setting->user_id = $id;
+        $setting->setting_id = 8;
+        $setting->value = '';
+        $setting->save();
+    }
     public function postRegister(Request $request)
     {
         $this->validate($request, [
@@ -197,12 +249,13 @@ class AuthController extends Controller
         $user->password = bcrypt($request->password);
         $user->email_verification_code = $verificationCode;
         $user->save();
-
+        $this->saveUserSetting($user->id);
         $token = JWTAuth::fromUser($user);
 
         Mail::send('emails.userverification', ['verificationCode' => $verificationCode], function ($m) use ($request) {
             $m->to($request->email, 'test')->subject('Email Confirmation');
         });
+
 
         return response()->success(compact('user', 'token'));
     }

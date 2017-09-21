@@ -1,7 +1,7 @@
 class UserPermissionsEditController {
   constructor ($stateParams, $state, API) {
     'ngInject'
-
+    
     this.$state = $state
     this.formSubmitted = false
     this.alerts = []

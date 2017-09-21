@@ -1,0 +1,69 @@
+<section class="content-header">
+  <h1>Settings <small>Global Configuration Values</small></h1>
+  <ol class="breadcrumb">
+    <li><a ui-sref="app.landing"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li class="active">Global Configuration Values</li>
+  </ol>
+</section>
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Edit Global Values</h3>
+        </div>
+        <form class="form" name="settingForm" ng-submit="vm.save()" novalidate>
+          <div class="box-body">
+            <div ng-if="vm.alerts" class="alert alert-{{alert.type}}" ng-repeat="alert in vm.alerts">
+              <h4>{{alert.title}}</h4>
+              <p>{{alert.msg}}</p>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': settingForm.fulltime_job_salary.$invalid && ( vm.formSubmitted || settingForm.fulltime_job_salary.$touched) }">
+              <label for="inputEmail3" class="control-label">Your existing(expected) fulltime job salary</label>
+             <input type="text" class="form-control" ng-model="vm.setting.data.fulltime_job_salary" name="fulltime_job_salary" placeholder="Example: 4000" required>
+                <p ng-show="settingForm.fulltime_job_salary.$error.required && ( vm.formSubmitted || settingForm.fulltime_job_salary.$touched)" class="help-block">Your fulltime job salary is required.From it, we will suggest how much salary per hour you should ask for your freelance project.</p>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': settingForm.fulltime_job_hours.$invalid && ( vm.formSubmitted || settingForm.fulltime_job_hours.$touched) }">
+              <label for="inputPassword3" class="control-label">Fulltime job hours</label>
+             <input type="text" class="form-control" ng-model="vm.setting.data.fulltime_job_hours" name="fulltime_job_hours" placeholder="Example: 8" required>
+                <p ng-show="settingForm.fulltime_job_hours.$error.required && ( vm.formSubmitted || settingForm.fulltime_job_hours.$touched)" class="help-block">Number of fulltime job hours will help us recommend you how much salary per hour you should ask for your freelance project.</p>
+           </div>
+            <div class="form-group">
+              <label for="inputPassword3" class="control-label">Average fulltime job salary</label>
+              <input type="text" class="form-control" ng-model="vm.setting.data.average_fulltime_job_salary" disabled/>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': settingForm.average_freelance_job_salary.$invalid && (vm.formSubmitted || settingForm.average_freelance_job_salary.$touched) }">
+              <label class="control-label">Recommended freelance salary per hour</label>
+              <input type="text" class="form-control" name="average_freelance_job_salary" ng-model="vm.setting.data.average_freelance_job_salary" required/>
+              <p ng-show="settingForm.average_freelance_job_salary.$error.required && (vm.formSubmitted || settingForm.average_freelance_job_salary.$touched)" class="help-block">Average freelance salary per hour is required as we will help you evaluate the project cost.</p>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': settingForm.number_hours_freelance_weekday.$invalid && (vm.formSubmitted || settingForm.number_hours_freelance_weekday.$touched)}">
+              <label class="control-label">Total number of hours I can do freelance per weekday</label>
+              <input type="text" class="form-control" name="number_hours_freelance_weekday" ng-model="vm.setting.data.number_hours_freelance_weekday" required/>
+              <p ng-show="settingForm.number_hours_freelance_weekday.$error.required && (vm.formSubmitted || settingForm.number_hours_freelance_weekday.$touched)" class="help-block">You can estimate how many hours average you can work per day for your freelance project, so we will recommend you whether you are overloaded to receive a new project or not.</p>
+            </div>
+
+            <div class="form-group" ng-class="{ 'has-error': settingForm.number_hours_freelance_weekend.$invalid && (vm.formSubmitted || settingForm.number_hours_freelance_weekend.$touched)}">
+              <label class="control-label">Total number of hours I can do freelance per weekend</label>
+              <input type="text" class="form-control" name="number_hours_freelance_weekend" ng-model="vm.setting.data.number_hours_freelance_weekend" required />
+              <p ng-show="settingForm.number_hours_freelance_weekend.$error.required && (vm.formSubmitted || settingForm.number_hours_freelance_weekend.$touched)" class="help-block">You can estimate how many hours average you can work per day for your freelance project, so we will recommend you whether you are overloaded to receive a new project or not.</p>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': settingForm.demo-editor.$invalid && (vm.formSubmitted || settingForm.demo-editor.$touched)}">
+              <label class="control-label">Opening Proposal</label>
+              <div text-angular data-ng-model="vm.settting.data.opening_proposal" style="min-height:200px;" name="demo-editor" ta-text-editor-class="clearfix border-around" ta-html-editor-class="border-around" required></div>
+              <p ng-show="settingForm.demo-editor.$error.required && (vm.formSubmitted || settingForm.demo-editor.$touched)" class="help-block">This opening proposal will help you save your time when you send a new proposal to your freelance clients</p>
+            </div> 
+            <div class="form-group">
+              <label class="control-label">Ending Proposal</label>
+              <div text-angular data-ng-model="vm.setting.data.ending_proposal" style="min-height:200px;" name="demo-editor1" ta-text-editor-class="clearfix border-around" ta-html-editor-class="border-around" required></div>
+             
+            </div>
+          <div class="box-footer">
+            
+            <button type="submit" class="btn btn-primary pull-right">Update</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

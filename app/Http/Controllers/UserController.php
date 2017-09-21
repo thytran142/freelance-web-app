@@ -13,6 +13,7 @@ use Validator;
 
 class UserController extends Controller
 {
+    
     /**
      * Get user current context.
      *
@@ -32,6 +33,7 @@ class UserController extends Controller
      */
     public function putMe(Request $request)
     {
+
         $user = Auth::user();
 
         $this->validate($request, [

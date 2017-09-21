@@ -6,6 +6,7 @@ export class APIService {
       'Content-Type': 'application/json',
       'Accept': 'application/x.laravel.v1+json'
     }
+    
 
     return Restangular.withConfig(function (RestangularConfigurer) {
       RestangularConfigurer

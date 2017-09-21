@@ -13,9 +13,9 @@ class UsersTableSeeder extends Seeder
     {
         DB::table('users')->insert([
             'id' => 1,
-            'name' => 'admin',
-            'email' => 'admin@example.com',
-            'password' => bcrypt('password'),
+            'name' => 'admin1',
+            'email' => 'thytran142@gmail.com',
+            'password' => bcrypt('pwd'),
             'email_verified' => '1',
             'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
         ]);

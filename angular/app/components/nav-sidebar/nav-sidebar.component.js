@@ -4,7 +4,7 @@ class NavSidebarController {
 
     let navSideBar = this
     this.can = AclService.can
-
+   // console.log("Access Nav Side Bar");
     ContextService.me(function (data) {
       navSideBar.userData = data
     })
