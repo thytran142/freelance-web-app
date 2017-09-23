@@ -11,8 +11,9 @@ class UserSettingSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('user_setting')->insert(
-            [
+
+
+        DB::table('user_setting')->insert([
             'id' => 1,
             'user_id' => 1,
             'setting_id' => 1,
@@ -83,8 +84,7 @@ class UserSettingSeeder extends Seeder
             'value' => '1',
             'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => \Carbon\Carbon::now()->toDateTimeString()
-        ]
-
-        );
+        ]);
     }
 }
+

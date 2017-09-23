@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-
+use App\Http\Controllers\SettingController;
 class SettingTest extends TestCase
 {
     /**
@@ -13,5 +13,9 @@ class SettingTest extends TestCase
    // 	$foo = true;
    // 	$this->assertTrue($foo);
    // }
+    public function testSettingController(){
+    	$settingController = new SettingController();
+    	
+    }
    
 }
