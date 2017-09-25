@@ -230,6 +230,17 @@ export function RoutesConfig ($stateProvider, $urlRouterProvider) {
         alerts: null
       }
     })
+    .state('app.freelancechanneladd',{
+      url: '/freelance-channels-add',
+      data: {
+        auth:true
+      },
+      views: {
+        'main@app': {
+          template: '<freelance-channels-add></freelance-channels-add>'
+        }
+      }
+    })
     .state('app.userpermissionsadd', {
       url: '/user-permissions-add',
       data: {

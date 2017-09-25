@@ -28,5 +28,18 @@ export class FreelanceChannelServiceService{
           }
         });
     }
+    putFreelanceChannel(data,cb,err){
+    console.log("Passed data is "+data)
+    this.http({
+        method: 'PUT',
+        url: 'api/freelances/put',
+        headers: this.headers,
+        data: data
+        }).then(function(response){
+          if(cb){
+            cb(response.data)
+          }
+        });
+      }
 }
 
