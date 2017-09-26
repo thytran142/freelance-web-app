@@ -38,6 +38,8 @@ $api->group(['middleware' => ['api', 'api.auth']], function ($api) {
     $api->put("settings/put",'SettingController@putSetting');
     $api->get('freelances/get','FreelanceChannelController@getFreelance');
     $api->put("freelances/put","FreelanceChannelController@putFreelance");
+    $api->post("freelances/show","FreelanceChannelController@showFreelance");
+    $api->post("freelances/update","FreelanceChannelController@updateFreelance");
 });
 
 $api->group(['middleware' => ['api', 'api.auth', 'role:admin.super|admin.user']], function ($api) {

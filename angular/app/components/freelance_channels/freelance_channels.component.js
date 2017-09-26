@@ -1,5 +1,5 @@
 class FreelanceChannelsController{
-    constructor($scope,DTOptionsBuilder,DTColumnBuilder,FreelanceChannelServiceService){
+    constructor($scope,DTOptionsBuilder,DTColumnBuilder,FreelanceChannelServiceService,$compile){
         'ngInject';
         console.log("Access FreelanceChannelsController")
         this.FreelanceChannelService = FreelanceChannelServiceService
@@ -32,7 +32,7 @@ class FreelanceChannelsController{
         }
         let actionsHtml = (data) => {
             return `
-                <a class="btn btn-xs btn-warning" ui-sref="app.freelancechanneledit({freelancenId: ${data.id}})">
+                <a class="btn btn-xs btn-warning" ui-sref="app.freelancechanneledit({channelId: ${data.id}})">
                     <i class="fa fa-edit"></i>
                 </a>
                 &nbsp

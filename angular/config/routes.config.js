@@ -241,6 +241,21 @@ export function RoutesConfig ($stateProvider, $urlRouterProvider) {
         }
       }
     })
+    .state('app.freelancechanneledit',{
+      url: '/freelance-channels-edit/:channelId',
+      data: {
+        auth:true
+      },
+      views: {
+        'main@app': {
+          template: '<freelance-channels-edit></freelance-channels-edit>'
+        }
+      },
+      params:{
+        alerts:null,
+        channelId: null
+      }
+    })
     .state('app.userpermissionsadd', {
       url: '/user-permissions-add',
       data: {

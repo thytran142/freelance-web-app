@@ -41,5 +41,31 @@ export class FreelanceChannelServiceService{
           }
         });
       }
+    showFreelanceChannel(data,cb,err){
+      console.log("Passed data is "+data)
+     this.http({
+        method: 'POST',
+        url: 'api/freelances/show',
+        headers: this.headers,
+        data: data
+        }).then(function(response){
+          if(cb){
+            cb(response.data)
+          }
+        });
+      }
+    updateFreelanceChannel(data,cb,err){
+      console.log("Passed data is "+data)
+      this.http({
+        method: 'POST',
+        url: 'api/freelances/update',
+        headers: this.headers,
+        data: data
+        }).then(function(response){
+          if(cb){
+            cb(response.data)
+          }
+        });
+    }
 }
 

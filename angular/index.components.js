@@ -1,3 +1,4 @@
+import {FreelanceChannelsEditComponent} from './app/components/freelance-channels-edit/freelance-channels-edit.component';
 import {FreelanceChannelsAddComponent} from './app/components/freelance-channels-add/freelance-channels-add.component';
 import {FreelanceChannelsComponent} from './app/components/freelance_channels/freelance_channels.component';
 import {UserSettingsComponent} from './app/components/user-settings/user-settings.component';
@@ -31,6 +32,7 @@ import { LoginFormComponent } from './app/components/login-form/login-form.compo
 import { RegisterFormComponent } from './app/components/register-form/register-form.component'
 
 angular.module('app.components')
+	.component('freelanceChannelsEdit', FreelanceChannelsEditComponent)
 	.component('freelanceChannelsAdd', FreelanceChannelsAddComponent)
 	.component('freelanceChannels', FreelanceChannelsComponent)
 	.component('userSettings', UserSettingsComponent)

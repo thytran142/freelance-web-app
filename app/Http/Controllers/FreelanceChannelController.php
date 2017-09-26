@@ -35,5 +35,29 @@ class FreelanceChannelController extends Controller
         $freelanceChannel->save();
         return response()->success("success");
     }
+    public function showFreelance(Request $request){
+        $data = $request->json()->all();
+        $id = $data['id'];
+        $freelanceChannel = FreelanceChannel::find($id);
+        return response()->success($freelanceChannel);
+    }
+    public function updateFreelance(Request $request){
+        $data = $request->json()->all();
+        $id = $data["id"];
+        $freelanceChannel = FreelanceChannel::find($id);
+        $freelanceChannel->name = $data["name"];
+        $freelanceChannel->url = $data["url"];
+        $freelanceChannel->number_first_hour = $data["number_first_hour"];
+        $freelanceChannel->rate_first_hour_hourly = $data["rate_first_hour_hourly"];
+        $freelanceChannel->rate_first_hour_fixed = $data['rate_first_hour_fixed'];
+        $freelanceChannel->number_second_hour = $data['number_second_hour'];
+        $freelanceChannel->rate_second_hour_hourly = $data['rate_second_hour_hourly'];
+        $freelanceChannel->rate_second_hour_fixed = $data['rate_second_hour_fixed'];
+        $freelanceChannel->rate_hourly_onward = $data['rate_hourly_onward'];
+        $freelanceChannel->rate_hourly_fixed = $data['rate_hourly_fixed'];
+        $freelanceChannel->min_charge = $data['min_charge'];
+        $freelanceChannel->save();
+        return response()->success("success");
+    }
    
 }
