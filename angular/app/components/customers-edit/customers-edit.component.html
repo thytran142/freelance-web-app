@@ -1,0 +1,92 @@
+<section class="content-header">
+  <h1>Customers <small>Update </small></h1>
+  <ol class="breadcrumb">
+    <li><a ui-sref="app.landing"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li><a ui-sref="app.customers">Customers List </a></li>
+    <li class="active">Update Customer {{vm.name}} </li>
+  </ol>
+</section>
+<section class="content">
+  <div class="row">
+    <div class="col-sm-12 col-md-7">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Update</h3>
+        </div>
+        <form class="form" name="customerForm" ng-submit="vm.save(customerForm.$valid)" novalidate>
+          <div class="box-body">
+            <div ng-if="vm.alerts" class="alert alert-{{alert.type}}" ng-repeat="alert in vm.alerts">
+              <h4>{{alert.title}}</h4>
+              <p>{{alert.msg}}</p>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': customerForm.name.$invalid && ( vm.formSubmitted || customerForm.name.$touched) }">
+              <label for="inputEmail3" class="control-label">Name*</label>
+                <input type="text" class="form-control" ng-model="vm.name" name="name" placeholder="Name" required>
+                <p ng-show="customerForm.name.$error.required && ( vm.formSubmitted || customerForm.name.$touched)" class="help-block">Name is required.</p>
+            </div>
+
+            <div class="form-group" ng-class="{ 'has-error': customerForm.url.$invalid && ( vm.formSubmitted || customerForm.url.$touched) }">
+              <label for="inputPassword3" class="control-label">Email</label>
+                <input type="text" class="form-control" ng-model="vm.email" name="email" placeholder="Email" required>
+                <p ng-show="customerForm.url.$error.required && ( vm.formSubmitted || customerForm.url.$touched)" class="help-block">Email is required.</p>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label">First name</label>
+              <input type="text" class="form-control" ng-model="vm.first_name" name="first_name">
+            </div>
+            <div class="form-group">
+              <label class="control-label">Last name</label>
+              <input type="text" class="form-control" ng-model="vm.last_name" name="last_name">
+            </div>
+            <div class="form-group">
+              <label class="control-label">Currency</label>
+              <select class="form-control" ng-model="vm.currency">
+                <option ng-repeat="object in vm.lsCountry" value="{{object.country_id}}">{{object.country_currency_code}}</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="control-label">Account Number</label>
+              <input type="text" class="form-control" ng-model="vm.account_number">
+            </div>
+            <div class="form-group">
+              <label class="control-label">Phone</label>
+              <input type="text" class="form-control" ng-model="vm.phone">
+            </div>
+            <div class="form-group">
+              <label class="control-label">Fax</label>
+              <input type="text" class="form-control" ng-model="vm.fax">
+            </div>
+            <div class="form-group">
+              <label class="control-label">Website</label>
+              <input type="text" class="form-control" ng-model="vm.website">
+            </div>
+            <div class="form-group">
+              <label class="control-label">Country</label>
+              <select class="form-control" ng-model="vm.country">
+                <option ng-repeat="object in vm.lsCountry" value="{{object.country_id}}">{{object.country_name}}</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="control-label">Address</label>
+              <input type="text" class="form-control" ng-model="vm.address">
+            </div>
+            <div class="form-group">
+              <label class="control-label">Postal Code</label>
+              <input type="text" class="form-control" ng-model="vm.postal_code">
+            </div>
+            <div class="form-group">
+              <label class="control-label">City</label>
+              <input type="text" class="form-control" ng-model="vm.city">
+            </div>
+           
+          </div><!--end box-body-->
+          <div class="box-footer">
+            <a ui-sref="app.customers" class="btn btn-default"><i class="fa fa-angle-double-left"></i> Back</a>
+            <button type="submit" class="btn btn-primary pull-right">Save changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

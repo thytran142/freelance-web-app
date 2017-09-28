@@ -40,6 +40,14 @@ $api->group(['middleware' => ['api', 'api.auth']], function ($api) {
     $api->put("freelances/put","FreelanceChannelController@putFreelance");
     $api->post("freelances/show","FreelanceChannelController@showFreelance");
     $api->post("freelances/update","FreelanceChannelController@updateFreelance");
+    $api->post("freelances/delete","FreelanceChannelController@deleteFreelance");
+    $api->get("customers/get","CustomerController@get");
+    $api->put("customers/put","CustomerController@putCustomer");
+    $api->get("countries/get","CountryController@get");
+    $api->post("customers/show","CustomerController@showCustomer");
+    $api->post("customers/update","CustomerController@updateCustomer");
+    $api->post("customers/delete","CustomerController@deleteCustomer");
+
 });
 
 $api->group(['middleware' => ['api', 'api.auth', 'role:admin.super|admin.user']], function ($api) {

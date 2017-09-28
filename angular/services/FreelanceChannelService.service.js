@@ -67,5 +67,18 @@ export class FreelanceChannelServiceService{
           }
         });
     }
+    deleteFreelance(data,cb,err){
+      console.log("Passed data is "+data)
+      this.http({
+        method: 'POST',
+        url: 'api/freelances/delete',
+        headers: this.headers,
+        data: data
+        }).then(function(response){
+          if(cb){
+            cb(response.data)
+          }
+        });
+    }
 }
 

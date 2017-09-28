@@ -1,3 +1,6 @@
+import {CustomersEditComponent} from './app/components/customers-edit/customers-edit.component';
+import {CustomersAddComponent} from './app/components/customers-add/customers-add.component';
+import {CustomersComponent} from './app/components/customers/customers.component';
 import {FreelanceChannelsEditComponent} from './app/components/freelance-channels-edit/freelance-channels-edit.component';
 import {FreelanceChannelsAddComponent} from './app/components/freelance-channels-add/freelance-channels-add.component';
 import {FreelanceChannelsComponent} from './app/components/freelance_channels/freelance_channels.component';
@@ -32,6 +35,9 @@ import { LoginFormComponent } from './app/components/login-form/login-form.compo
 import { RegisterFormComponent } from './app/components/register-form/register-form.component'
 
 angular.module('app.components')
+	.component('customersEdit', CustomersEditComponent)
+	.component('customersAdd', CustomersAddComponent)
+	.component('customers', CustomersComponent)
 	.component('freelanceChannelsEdit', FreelanceChannelsEditComponent)
 	.component('freelanceChannelsAdd', FreelanceChannelsAddComponent)
 	.component('freelanceChannels', FreelanceChannelsComponent)

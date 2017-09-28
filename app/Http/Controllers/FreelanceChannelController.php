@@ -59,5 +59,12 @@ class FreelanceChannelController extends Controller
         $freelanceChannel->save();
         return response()->success("success");
     }
+    public function deleteFreelance(Request $request){
+        $data = $request->json()->all();
+        $id = $data["id"];
+        $freelanceChannel = FreelanceChannel::find($id);
+        $freelanceChannel->delete();
+        return response()->success("success");
+    }
    
 }

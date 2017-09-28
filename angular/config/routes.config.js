@@ -256,6 +256,49 @@ export function RoutesConfig ($stateProvider, $urlRouterProvider) {
         channelId: null
       }
     })
+    .state('app.customers',{
+      url: '/customers',
+      data: {
+        auth:true
+      },
+      views: {
+        'main@app': {
+          template: '<customers></customers>'
+        }
+      },
+      params: {
+        alerts: null
+      }
+    })
+    .state('app.customersadd',{
+      url: '/customers-add',
+      data: {
+        auth:true
+      },
+      views: {
+        'main@app': {
+          template: '<customers-add></customers-add>'
+        }
+      },
+      params: {
+        alerts: null
+      }
+    })
+    .state('app.customersedit',{
+      url: '/customers-edit/:customerId',
+      data: {
+        auth:true
+      },
+      views: {
+        'main@app': {
+          template: '<customers-edit></customers-edit>'
+        }
+      },
+      params:{
+        alerts:null,
+        customerId: null
+      }
+    })
     .state('app.userpermissionsadd', {
       url: '/user-permissions-add',
       data: {

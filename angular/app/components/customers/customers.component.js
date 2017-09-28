@@ -1,15 +1,14 @@
-class FreelanceChannelsController{
-    constructor($state,$scope,DTOptionsBuilder,DTColumnBuilder,FreelanceChannelServiceService,$compile){
+class CustomersController{
+    constructor($state,$scope,DTOptionsBuilder,DTColumnBuilder,CustomerService,$compile){
         'ngInject';
-        console.log("Access FreelanceChannelsController")
-        this.FreelanceChannelService = FreelanceChannelServiceService
+        this.CustomerService = CustomerService
         this.DTOptionsBuilder = DTOptionsBuilder
         this.DTColumnBuilder = DTColumnBuilder
         this.displayTable = false 
-        //***************Retrieve Freelance Channels List ********************/
+       //***************Retrieve Customers List ********************/
         var self = this
         var option = {}
-        this.FreelanceChannelService.getFreelanceChannelList(option, function(data){
+        this.CustomerService.getCustomerList(option, function(data){
             console.log("Data is "+JSON.stringify(data.data))
             var dataSet = data.data 
             //************Create table *************
@@ -19,9 +18,9 @@ class FreelanceChannelsController{
           .withOption('responsive', true)
           .withBootstrap()
              self.dtColumns = [
-          DTColumnBuilder.newColumn('id').withTitle('ID'),
           DTColumnBuilder.newColumn('name').withTitle('Name'),
-          DTColumnBuilder.newColumn('url').withTitle('URL'),
+          DTColumnBuilder.newColumn('email').withTitle('Email'),
+          DTColumnBuilder.newColumn('phone').withTitle('Phone'),
           DTColumnBuilder.newColumn(null).withTitle('Actions').notSortable()
             .renderWith(actionsHtml)
         ]
@@ -32,7 +31,7 @@ class FreelanceChannelsController{
         }
         let actionsHtml = (data) => {
             return `
-                <a class="btn btn-xs btn-warning" ui-sref="app.freelancechanneledit({channelId: ${data.id}})">
+                <a class="btn btn-xs btn-warning" ui-sref="app.customersedit({customerId: ${data.id}})">
                     <i class="fa fa-edit"></i>
                 </a>
                 &nbsp
@@ -40,7 +39,7 @@ class FreelanceChannelsController{
                     <i class="fa fa-trash-o"></i>
                 </button>`
          }   
-        //**************End Retrieve Freelance Channels List *****************/
+        //**************End Retrieve Customers List *****************/
     }
     delete(id){
      
@@ -49,7 +48,7 @@ class FreelanceChannelsController{
       };
       var self = this
       console.log("Option is "+JSON.stringify(option))
-      this.FreelanceChannelService.deleteFreelance(option,function(data){
+      this.CustomerService.deleteCustomer(option,function(data){
           console.log("Data is "+JSON.stringify(data))
           self.$state.reload()
         });
@@ -57,11 +56,12 @@ class FreelanceChannelsController{
     }
     $onInit(){
     }
+
 }
 
-export const FreelanceChannelsComponent = {
-    templateUrl: './views/app/components/freelance_channels/freelance_channels.component.html',
-    controller: FreelanceChannelsController,
+export const CustomersComponent = {
+    templateUrl: './views/app/components/customers/customers.component.html',
+    controller: CustomersController,
     controllerAs: 'vm',
     bindings: {}
 };
