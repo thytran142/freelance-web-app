@@ -18,6 +18,12 @@
               <h4>{{alert.title}}</h4>
               <p>{{alert.msg}}</p>
             </div>
+            <div class="form-group">
+              <label class="control-label">Currency</label>
+              <select class="form-control" ng-model="vm.currency">
+                <option ng-repeat="object in vm.lsCountry" value="{{object.country_id}}">{{object.country_currency_code}}</option>
+              </select>
+            </div>
             <div class="form-group" ng-class="{ 'has-error': settingForm.fulltime_job_salary.$invalid && ( vm.formSubmitted || settingForm.fulltime_job_salary.$touched) }">
               <label for="inputEmail3" class="control-label">Your existing(expected) fulltime job salary per month</label>
              <input type="text" ng-change="vm.adjustSalaryPerHour()" class="form-control" ng-model="vm.fulltime_job_salary" name="fulltime_job_salary" placeholder="Example: 4000" required >

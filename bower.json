@@ -26,7 +26,11 @@
     "angular-datatables": "^0.5.4",
     "sweetalert": "^1.1.3",
     "checklist-model": "^0.9.0",
-    "textAngular": "^1.5.16"
+    "textAngular": "^1.5.16",
+    "angular-ui-date": "^1.0.1",
+    "ng-image-input-with-preview": "^0.0.6",
+    "angular-file-upload": "^2.5.0",
+    "ng-file-upload": "^12.2.13"
   },
   "resolutions": {
     "angular": "~1.5.x"

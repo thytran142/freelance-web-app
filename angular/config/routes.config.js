@@ -299,6 +299,34 @@ export function RoutesConfig ($stateProvider, $urlRouterProvider) {
         customerId: null
       }
     })
+    .state('app.invoices',{
+      url: '/invoices',
+      data: {
+        auth:true
+      },
+      views: {
+        'main@app': {
+          template: '<invoices></invoices>'
+        }
+      },
+      params: {
+        alerts: null
+      }
+    })
+    .state('app.addinvoices',{
+      url: '/invoices-add',
+      data: {
+        auth:true
+      },
+      views: {
+        'main@app': {
+          template: '<invoices-add></invoices-add>'
+        }
+      },
+      params: {
+        alerts: null
+      }
+    })
     .state('app.userpermissionsadd', {
       url: '/user-permissions-add',
       data: {

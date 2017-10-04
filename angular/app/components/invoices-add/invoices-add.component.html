@@ -1,0 +1,168 @@
+<section class="content-header">
+  <h1>New Invoice <small>Add </small></h1>
+  <ol class="breadcrumb">
+    <li><a ui-sref="app.landing"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li><a ui-sref="app.invoices">Invoices</a></li>
+    <li class="active">Create New Invoice</li>
+  </ol>
+</section>
+<section class="content">
+  <div class="row">
+    <div class="col-sm-12 col-md-12">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">New Invoice</h3>
+        </div>
+        <form class="form" name="invoiceForm" ng-submit="vm.save(invoiceForm.$valid)" novalidate>
+          <div class="box-body">
+            <div ng-if="vm.alerts" class="alert alert-{{alert.type}}" ng-repeat="alert in vm.alerts">
+              <h4>{{alert.title}}</h4>
+              <p>{{alert.msg}}</p>
+            </div>
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">Business Address and Contact Details, Title, Summary and Logo</div>
+                <div class="panel-body">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="button" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'"
+                            ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"
+                            ngf-resize="{width: 300, height: 200}"><img src="/img/default-logo.png" style="width:80%;" ng-show="file == null"></img></div>
+                         <img ngf-thumbnail="file">
+                      </div><!--end column 1-->
+                      <div class="col-md-6">
+                          <div class="form-group" ng-class="{'has-error': invoiceForm.title.$invalid && (vm.formSubmitted || invoiceForm.title.$touched)}">
+                            <label class="sr-only">Title</label>
+                            <input type="text" class="form-control" name="title" ng-model="vm.title" placeholder="INVOICE" required/>
+                            <p ng-show="invoiceForm.title.$error.required && (vm.formSubmitted || invoiceForm.title.$touched)" class="help-block">Title is required.</p>
+                          </div>
+                          <div class="form-group" ng-class="{'has-error': invoiceForm.summary.$invalid && (vm.formSubmitted || invoiceForm.summary.$touched)}">
+                              <label class="sr-only">Summary (E.g project name, description of the invoice)</label>
+                              <input type="text" class="form-control" name="summary" ng-model="vm.summary" placeholder="Summary (E.g project name, description of the invoice)"  required/>
+                              <p ng-show="invoiceForm.summary.$error.required && (vm.formSubmitted || invoiceForm.summary.$touched)" class="help-block">Summary is required.</p>
+                          </div>
+                          <div class="form-group">
+                              <label class="sr-only">Address</label>
+                              <p class="form-control-static"><strong>312Biz</strong></p>
+                              <p class="form-control-static">25C Tang Bat Ho Binh Thanh district </p>
+                              <p class="form-control-static">Hochiminh City</p>
+                              <p class="form-control-static">Vietnam</p>
+                              <p class="form-control-static">(84)126 789 2042</p>
+                              <a href="#">Edit Your Business Address and Contact Details</a>
+                          </div>
+                      </div><!--end column 2-->
+                  </div>
+                </div>
+            </div><!--end panel-->
+            <div class="panel panel-primary">
+                <div class="panel-body">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                          <select class="form-control" ng-model="vm.customer_id">
+                            <option ng-repeat="object in lsCustomer" value="{{object.id}}">{{object.name}}</option>
+                            <option value="-1">Choose a new customer</option>
+                          </select>
+                      </div>
+                    </div><!--end column 1-->
+                    <div class="col-md-6">
+                        <div class="form-group" ng-class="{'has-error': invoiceForm.invoice_number.$invalid && (vm.formSubmitted || invoiceForm.invoice_number.$touched)}">
+                            <label class="sr-only">Invoice Number</label>
+                            <input type="text" class="form-control" ng-model="vm.invoice_number" name="invoice_number" placeholder="Invoice Number" required/>
+                            <p ng-show="invoiceForm.invoice_number.$error.required && (vm.formSubmitted || invoiceForm.invoice_number.$touched)" class="help-block">Invoice Number is required</p>
+                         </div>
+                        <div class="form-group">
+                            <label class="sr-only">PO/SO Number</label>
+                            <input type="text" class="form-control" placeholder="SO/PO Number" ng-model="so_number">
+                        </div>
+                         <div class="form-group">
+                            <label class="sr-only">Invoice Date</label>
+                            <input ui-date class="form-control" ng-model="vm.invoice_date" placeholder="Invoice Date">
+                         </div>
+                         <div class="form-group">
+                            <label class="sr-only">Payment Due</label>
+                            <input ui-date class="form-control" ng-model="vm.payment_due_date" placeholder="Payment Due">
+                            <p>On Receipt</p>
+                        </div>
+                    </div><!--end column 2-->
+                    <!--======== Table Products Listing ===============-->
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <td>Item</td>
+                                <td></td>
+                                <td>Quantity</td>
+                                <td>Price</td>
+                                <td>Amount</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="object in vm.lsItem">
+                              <td>{{object.name}} </td>
+                              <td><textarea class="form-control"  ng-model="object.description" rows="3"></textarea></td>
+                              <td><input type="text" class="form-control" ng-model="object.quantity"></td>
+                              <td><input type='text' class="form-control" ng-model="object.price"></td>
+                              <td>{{vm.selectedCurrency}} {{object.amount}} <a href="#"><span class="glyphicon glyphicon-trash"></span></a></td>
+                            </tr>
+                            <tr>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td><select class="form-control" ng-model="vm.taxtObject">
+                                  <option ng-repeat="object in lsTax" value="{{object.id}}">{{object.name}} {{object.rate}} ({{object.taxNumber}})</option>
+                                </select></td>
+                              <td>{{vm.selectedCurrency}} {{vm.tax}}</td>
+                            </tr>
+                            <tr>
+                              <td colspan="5" style="text-align:center;"><a href="#">Add an item</a></td>
+                            </tr>
+                            <tr style="border-top-color: orange;">
+                                <td colspan="3"></td>
+                                <td>Subtotal</td>
+                                <td>{{vm.subtotal}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3"></td>
+                                <td>{{vm.taxObject.name}} {{vm.taxObject.rate}} ({{vm.taxNumber}})</td>
+                                <td>{{vm.selectedCurrency}} {{vm.tax}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3"></td>
+                                <td><select class="form-control" ng-model="vm.selectedCurrency">
+                                    <option ng-repeat="object in vm.lsCountry" value="{{object.country_id}}">{{object.country_currency_code}}</option>
+                                  </select>
+                                </td>
+                                <td>{{vm.selectedCurrency}} {{vm.totalAmount}}</td>
+                            </tr>
+                            <tr ng-show="showCurrencyConversion == '1'">
+                                <td colspan="5" style="text-align:right;">
+                                  Currency conversion: {{vm.currency}} {{vm.exchangeAmount}}
+                                </td>
+                            </tr>
+                            <tr>
+                              <td colspan="5">
+                                  <textarea rows="3" class="form-control" ng-model="vm.note" placeholder="Enter notes that are visible to your customer"></textarea>
+                              </td>
+                            </tr>
+                          </tbody>
+                    </table>
+                    <!--======== Table Products Listing ===============-->
+                 </div><!--end panel-body-->
+            </div><!--end panel-->
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                  Footer
+                </div>
+                <div class="panel-body">
+                    <textarea class="form-control" rows="3" ng-model="vm.footer" placeholder="Enter a footer for this invoice (e.g tax information, thank you note)"></textarea>
+                </div>
+            </div>
+          </div><!--end box-body-->
+          <div class="box-footer">
+            <a ui-sref="app.freelancechannels" class="btn btn-default"><i class="fa fa-angle-double-left"></i> Back</a>
+            <button type="submit" class="btn btn-primary pull-right">Save and continue</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

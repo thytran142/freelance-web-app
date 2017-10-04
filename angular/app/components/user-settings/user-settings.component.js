@@ -1,7 +1,8 @@
 class UserSettingsController{
-    constructor($scope, $state,$stateParams,$window,$http,SettingServiceService){
+    constructor($scope, $state,$stateParams,$window,$http,SettingServiceService,CustomerService){
         'ngInject';
         this.SettingService = SettingServiceService
+        this.CustomerService = CustomerService
         var self = this
         self.fulltime_job_salary = ""
         self.fulltime_job_hours = ""
@@ -18,6 +19,16 @@ class UserSettingsController{
         if ($stateParams.alerts) {
             this.alerts.push($stateParams.alerts)
         }
+       
+        /***************************Retrieve Countries List **********************/
+            var self = this 
+            var option = {}
+            this.CustomerService.getCountryList(option,function(data){
+                console.log("Data is "+JSON.stringify(data));
+                var data = data.data 
+                self.lsCountry = data 
+            });
+        /***************************End Retrieve Countries List *******************/
         //******************Retrieve Setting Data *******************/
         var self = this
         SettingServiceService.getSetting(option,function(data){
@@ -47,6 +58,9 @@ class UserSettingsController{
             }
             if(value.id == "8"){
                 self.ending_proposal = value.value 
+            }
+            if(value.id == "9"){
+                self.currency = value.value
             }
         });
 
