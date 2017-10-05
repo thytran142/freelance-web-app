@@ -1,7 +1,7 @@
 export class InvoiceService{
     constructor($rootScope,$window,$http){
         'ngInject';
-   this.$rootScope = $rootScope
+   this.$rootScope = $rootScope 
     this.$window = $window
     this.http = $http
     var headers = {
@@ -16,10 +16,10 @@ export class InvoiceService{
     this.headers = headers     
         //
     }//end Constructor
-    getFreelanceChannelList(data,cb,err){
+    getInvoiceSetting(data,cb,err){
     	this.http({
         method: 'GET',
-        url: 'api/freelances/get',
+        url: 'api/invoices/get-setting',
         headers: this.headers
         }).then(function(response){
           console.log("Response is "+JSON.stringify(response))

@@ -1,3 +1,4 @@
+import {InvoicesAddAddressComponent} from './app/components/invoices-add-address/invoices-add-address.component';
 import {InvoicesAddComponent} from './app/components/invoices-add/invoices-add.component';
 import {InvoicesComponent} from './app/components/invoices/invoices.component';
 import {CustomersEditComponent} from './app/components/customers-edit/customers-edit.component';
@@ -37,6 +38,7 @@ import { LoginFormComponent } from './app/components/login-form/login-form.compo
 import { RegisterFormComponent } from './app/components/register-form/register-form.component'
 
 angular.module('app.components')
+	.component('invoicesAddAddress', InvoicesAddAddressComponent)
 	.component('invoicesAdd', InvoicesAddComponent)
 	.component('invoices', InvoicesComponent)
 	.component('customersEdit', CustomersEditComponent)

@@ -84,7 +84,58 @@ class UserSettingSeeder extends Seeder
             'value' => '1',
             'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => \Carbon\Carbon::now()->toDateTimeString()
-        ]);
+        ],
+        [
+            'id' => 10,
+            'user_id' => 1,
+            'setting_id' => 10,
+            'value' => '',
+            'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+            'updated_at' => \Carbon\Carbon::now()->toDateTimeString()
+        ],
+        [
+            'id' => 11,
+            'user_id' => 1,
+            'setting_id' => 11,
+            'value' => '',
+            'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+            'updated_at' => \Carbon\Carbon::now()->toDateTimeString()
+        ],
+        [
+            'id' => 12,
+            'user_id' => 1,
+            'setting_id' => 12,
+            'value' => '25C Tang Bat Ho Binh Thanh District',
+            'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+            'updated_at' => \Carbon\Carbon::now()->toDateTimeString()
+        ],
+        [
+            'id' => 13,
+            'user_id' => 1,
+            'setting_id' => 13,
+            'value' => 'Hochiminh',
+            'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+            'updated_at' => \Carbon\Carbon::now()->toDateTimeString()
+        ],
+        [
+            'id' => 14,
+            'user_id' => 1,
+            'setting_id' => 14,
+            'value' => '1',
+            'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+            'updated_at' => \Carbon\Carbon::now()->toDateTimeString()
+        ],
+        [
+            'id' => 15,
+            'user_id' => 1,
+            'setting_id' => 15,
+            'value' => '(84)1234567',
+            'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+            'updated_at' => \Carbon\Carbon::now()->toDateTimeString()
+        ]
+
+    );
+
     }
 }
 

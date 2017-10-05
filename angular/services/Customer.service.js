@@ -34,7 +34,7 @@ export class CustomerService{
         url: "api/countries/get",
         headers: this.headers
       }).then(function(response){
-        console.log("Response is "+JSON.stringify(response))
+       // console.log("Response is "+JSON.stringify(response))
         if(cb){
           cb(response.data)
         }

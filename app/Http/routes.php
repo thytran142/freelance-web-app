@@ -47,6 +47,7 @@ $api->group(['middleware' => ['api', 'api.auth']], function ($api) {
     $api->post("customers/show","CustomerController@showCustomer");
     $api->post("customers/update","CustomerController@updateCustomer");
     $api->post("customers/delete","CustomerController@deleteCustomer");
+    $api->get("invoices/get-setting","InvoiceController@getSetting");
 
 });
 
