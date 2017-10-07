@@ -31,8 +31,7 @@ class InvoicesAddController{
          });
 
     //****************** Retrieve Invoice Default Setting ******************//
-
-     /***************************Retrieve Countries List **********************/
+    /***************************Retrieve Countries List **********************/
             var self = this 
             var option = {}
             this.CustomerService.getCountryList(option,function(data){
@@ -41,7 +40,13 @@ class InvoicesAddController{
                 self.lsCountry = data 
             });
     //*******************End Retrieve Country Listing ********************//
-
+    //******************* Retrieve Customer Listing **********************//
+        var self = this
+        var option = {}
+        this.CustomerService.getCustomerList(option, function(data){
+            self.lsCustomer = data.data
+       })
+    //**************** Retrieve Customer Listing *************************//
     } //End Constructor 
     modalAddressOpen(size) {
     let $uibModal = this.$uibModal
