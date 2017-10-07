@@ -7,7 +7,7 @@ class InvoicesAddController{
       this.animationsEnabled = true
      this.InvoiceService = InvoiceService
      this.CustomerService = CustomerService
-     this.logoImage = ""
+     this.logoImage = "" 
      
      this.title = "INVOICE"
      this.business_name = ""
@@ -48,6 +48,34 @@ class InvoicesAddController{
        })
     //**************** Retrieve Customer Listing *************************//
     } //End Constructor 
+    openChooseNewCustomer(){
+      alert("Thy")
+      let $uibModal = this.$uibModal
+      let $scope = this.$scope
+      let $log = this.$log
+
+      var modalInstance = $uibModal.open({
+      animation: this.animationsEnabled,
+      templateUrl: './views/app/components/invoices-add/invoices-add-add-customer.component.html',
+      controller: this.modalcontroller,
+      controllerAs: 'mvm',
+      resolve: {
+        lsCountry: () => {
+          return lsCountry
+        }
+      }
+    });
+      modalInstance.result.then((response) => {
+        console.log("Response is "+JSON.stringify(response))
+        this.business_name = response.business_name
+        this.business_address_1 = response.business_address_1
+        this.business_address_city = response.business_address_city
+        this.business_address_country = response.business_address_country
+        this.business_address_contact = response.business_address_contact
+    }, () => {
+      $log.info('Modal dismissed at: ' + new Date())
+    })
+    }
     modalAddressOpen(size) {
     let $uibModal = this.$uibModal
     let $scope = this.$scope
@@ -86,6 +114,29 @@ class InvoicesAddController{
    /****************** Re-initialize data ********************/
   
   }
+addCustomerModalController($scope,$uibModalInstance,lsCountry){
+  'ngInject'
+    this.lsCountry = lsCountry
+  
+    this.ok = () => {
+      $scope.response = {
+      "business_name": this.business_name,
+      "business_address_1": this.business_address_1,
+      "business_address_city": this.business_address_city,
+      "business_address_country": this.business_address_country,
+      "business_address_contact": this.business_address_contact
+    }
+        $uibModalInstance.close($scope.response)
+    }
+
+    this.cancel = () => {
+      $uibModalInstance.dismiss('cancel')
+    }
+  }
+   
+    $onInit(){
+    }
+}
 modalcontroller ($scope, $uibModalInstance,businessAddressData) {
     'ngInject'
     this.businessAddressData = businessAddressData

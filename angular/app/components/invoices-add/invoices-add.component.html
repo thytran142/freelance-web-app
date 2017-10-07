@@ -4,7 +4,7 @@
     <li><a ui-sref="app.landing"><i class="fa fa-dashboard"></i> Home</a></li>
     <li><a ui-sref="app.invoices">Invoices</a></li>
     <li class="active">Create New Invoice</li>
-  </ol>
+  </ol> 
 </section>
 <section class="content">
   <div class="row">
@@ -60,7 +60,7 @@
                 <div class="panel-body">
                     <div class="col-md-6">
                       <div class="form-group">
-                          <select class="form-control" ng-model="vm.customer_id">
+                          <select class="form-control" ng-model="vm.customer_id" ng-change="openChooseNewCustomer()">
                             <option ng-repeat="object in vm.lsCustomer" value="{{object.id}}">{{object.name}}</option>
                             <option value="-1">Choose a new customer</option>
                           </select>
